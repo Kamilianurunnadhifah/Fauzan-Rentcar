@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fauzan Rentcar – Linktree</title>
-  <meta name="description" content="Linktree rental mobil Fauzan Rentcar: WhatsApp, katalog, harga, booking, syarat, lokasi, testimoni." />
+  <meta name="description" content="Linktree SPA dengan navigasi halaman: menu utama, katalog, harga, booking, syarat, lokasi, testimoni." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -19,15 +19,20 @@
     .hero h1{margin:0;font-size:22px;font-weight:800}
     .hero p{margin:2px 0 0;color:var(--muted)}
 
+    /* App bar */
+    .appbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(8px);background:rgba(2,6,23,.6);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px;padding:10px}
+    .back{display:none;padding:10px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--text);cursor:pointer}
+    .app-title{font-weight:800}
+
     /* Buttons */
     .btn{display:flex;align-items:center;gap:10px;justify-content:space-between;width:100%;padding:14px 18px;margin:10px 0;border-radius:16px;background:#1e293b;color:var(--text);font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.06);font-size:16px;transition:.2s}
     .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.14)}
     .btn.whatsapp{background:linear-gradient(180deg,#1f9d55,#16a34a);color:#052e16;border-color:#22c55e;box-shadow:0 10px 30px -10px var(--ring)}
     .btn .tag{margin-left:auto;font-size:12px;padding:.25rem .5rem;border-radius:999px;background:rgba(255,255,255,.08);color:#052e16}
-    .btn.active{background:#334155}
 
-    /* Accordion content */
-    .content{display:none;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;margin:-2px 0 14px}
+    /* Pages */
+    .page{display:none}
+    .page.active{display:block}
 
     /* Utilities */
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
@@ -49,6 +54,11 @@
   </style>
 </head>
 <body>
+  <div class="appbar">
+    <button class="back" id="backBtn">← Kembali</button>
+    <span class="app-title">Fauzan Rentcar</span>
+  </div>
+
   <div class="container">
     <header class="hero">
       <img src="https://placehold.co/120/png?text=FR" alt="Fauzan Rentcar"/>
@@ -58,27 +68,42 @@
       </div>
     </header>
 
-    <button class="btn whatsapp" id="btnWA">💬 WhatsApp <span class="tag">balas cepat</span></button>
+    <!-- PAGE: HOME -->
+    <section class="page active" id="home">
+      <button class="btn whatsapp" id="btnWA">💬 WhatsApp <span class="tag">balas cepat</span></button>
+      <button class="btn" data-go="katalog">🚗 Katalog Mobil</button>
+      <button class="btn" data-go="harga">💲 Harga & Paket</button>
+      <button class="btn" data-go="booking">📝 Cek Ketersediaan / Booking</button>
+      <button class="btn" data-go="syarat">📎 Syarat & Ketentuan</button>
+      <button class="btn" data-go="cara">⚙️ Cara Booking</button>
+      <button class="btn" data-go="testimoni">🌟 Testimoni</button>
+      <button class="btn" data-go="lokasi">📍 Lokasi</button>
+      <button class="btn" data-go="tentang">ℹ️ Tentang Kami</button>
+      <button class="btn" data-go="kontak">☎️ Kontak Lainnya</button>
+    </section>
 
-    <button class="btn" data-target="#katalog">🚗 Katalog Mobil</button>
-    <div id="katalog" class="content">
+    <!-- PAGE: KATALOG -->
+    <section class="page" id="katalog">
+      <h2>🚗 Katalog Mobil</h2>
       <div class="note" style="margin-bottom:10px">*Harga belum termasuk BBM, tol, parkir. Bisa antar-jemput (opsional).</div>
       <div class="grid" id="gridMobil"></div>
-    </div>
+    </section>
 
-    <button class="btn" data-target="#harga">💲 Harga & Paket</button>
-    <div id="harga" class="content">
+    <!-- PAGE: HARGA -->
+    <section class="page" id="harga">
+      <h2>💲 Harga & Paket</h2>
       <ul class="list">
         <li><strong>Paket Harian</strong> — 24 jam lepas kunci / dengan sopir</li>
         <li><strong>Paket Mingguan</strong> — hemat hingga 15% dari harian</li>
         <li><strong>Paket Bulanan</strong> — hemat hingga 25% + free antar (syarat berlaku)</li>
         <li><strong>Sopir</strong> — +Rp150.000 s/d Rp250.000 per hari (tergantung rute)</li>
       </ul>
-    </div>
+    </section>
 
-    <button class="btn" data-target="#booking">📝 Cek Ketersediaan / Booking</button>
-    <div id="booking" class="content">
-      <p class="note">Isi form berikut atau klik Booking via WhatsApp di kartu mobil.</p>
+    <!-- PAGE: BOOKING -->
+    <section class="page" id="booking">
+      <h2>📝 Cek Ketersediaan / Booking</h2>
+      <p class="note">Isi form berikut atau klik “Booking via WhatsApp” pada kartu mobil.</p>
       <form id="formCek">
         <div class="grid" style="grid-template-columns:repeat(12,1fr);gap:10px">
           <div style="grid-column:span 12">
@@ -100,10 +125,11 @@
           </div>
         </div>
       </form>
-    </div>
+    </section>
 
-    <button class="btn" data-target="#syarat">📎 Syarat & Ketentuan</button>
-    <div id="syarat" class="content">
+    <!-- PAGE: SYARAT -->
+    <section class="page" id="syarat">
+      <h2>📎 Syarat & Ketentuan</h2>
       <ul class="list">
         <li>WNI: KTP + SIM A aktif; WNA: Paspor + SIM internasional.</li>
         <li>Deposit/jaminan (dikembalikan saat mobil balik sesuai kondisi).</li>
@@ -111,10 +137,11 @@
         <li>Denda pelanggaran lalu lintas menjadi tanggung jawab penyewa.</li>
         <li>Dilarang untuk balap/kejahatan/kegiatan melanggar hukum.</li>
       </ul>
-    </div>
+    </section>
 
-    <button class="btn" data-target="#cara">⚙️ Cara Booking</button>
-    <div id="cara" class="content">
+    <!-- PAGE: CARA -->
+    <section class="page" id="cara">
+      <h2>⚙️ Cara Booking</h2>
       <ol class="list" style="list-style:decimal inside">
         <li>Pilih mobil dan cek tanggal tersedia.</li>
         <li>Kirim data diri & jadwal lewat WhatsApp / Form.</li>
@@ -122,10 +149,11 @@
         <li>Unit diantar/ambil di lokasi yang disepakati.</li>
         <li>Pelunasan saat serah terima unit.</li>
       </ol>
-    </div>
+    </section>
 
-    <button class="btn" data-target="#testimoni">🌟 Testimoni</button>
-    <div id="testimoni" class="content">
+    <!-- PAGE: TESTIMONI -->
+    <section class="page" id="testimoni">
+      <h2>🌟 Testimoni</h2>
       <blockquote class="card" style="padding:14px;margin:0 0 10px">
         <p style="margin:0 0 6px">“Mobil bersih, admin responsif, sopir ramah. Pasti repeat!”</p>
         <span class="chip">— Salsa</span>
@@ -134,125 +162,118 @@
         <p style="margin:0 0 6px">“Harga masuk akal, proses cepat. Rekomended.”</p>
         <span class="chip">— Ardi</span>
       </blockquote>
-    </div>
+    </section>
 
-    <button class="btn" data-target="#lokasi">📍 Lokasi</button>
-    <div id="lokasi" class="content">
+    <!-- PAGE: LOKASI -->
+    <section class="page" id="lokasi">
+      <h2>📍 Lokasi</h2>
       <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
         <iframe title="Lokasi Rental" src="https://www.google.com/maps?q=-6.200000,106.816666&z=12&output=embed" width="100%" height="300" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    </div>
+    </section>
 
-    <button class="btn" data-target="#tentang">ℹ️ Tentang Kami</button>
-    <div id="tentang" class="content">
+    <!-- PAGE: TENTANG -->
+    <section class="page" id="tentang">
+      <h2>ℹ️ Tentang Kami</h2>
       <p>Kami adalah penyedia jasa rental mobil terpercaya sejak 20XX. Fokus pada layanan tepat waktu, armada prima, dan harga bersahabat.</p>
-    </div>
+    </section>
 
-    <button class="btn" data-target="#kontak">☎️ Kontak Lainnya</button>
-    <div id="kontak" class="content">
+    <!-- PAGE: KONTAK -->
+    <section class="page" id="kontak">
+      <h2>☎️ Kontak Lainnya</h2>
       <ul class="list">
         <li>Instagram: <a href="https://instagram.com/username" target="_blank" rel="noopener">@username</a></li>
         <li>Telepon: <a href="tel:+626281511515141">(021) 123-456-789</a></li>
         <li>Email: <a href="mailto:halo@fauzanrentcar.com">halo@fauzanrentcar.com</a></li>
         <li>Jam Operasional: 07:00–21:00 (WA 24/7 untuk darurat)</li>
       </ul>
-    </div>
+    </section>
+
   </div>
 
   <script>
     /***** KONFIG *****/
-    const WA_NUMBER = "6281511515141"; // nomor tanpa tanda +
+    const WA_NUMBER = "6281511515141"; // tanpa tanda +
     const BRAND = "Fauzan Rentcar";
 
-    // WhatsApp default
+    // WhatsApp utama
     const defaultMsg = `Halo ${BRAND}, saya ingin bertanya tentang sewa mobil.`
     document.getElementById('btnWA').onclick = ()=> window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(defaultMsg)}`,'_blank')
 
-    // ===== Accordion: buka/utup konten saat klik, satu terbuka dalam satu waktu =====
-    const buttons = Array.from(document.querySelectorAll('.btn[data-target]'))
-    const contents = Array.from(document.querySelectorAll('.content'))
-    // tutup semua saat awal
-    contents.forEach(c=>c.style.display='none');
+    // ===== Router sederhana berbasis hash =====
+    const pages = Array.from(document.querySelectorAll('.page'))
+    const backBtn = document.getElementById('backBtn')
+    function go(id){
+      pages.forEach(p=>p.classList.remove('active'))
+      const page = document.getElementById(id)
+      if(page){ page.classList.add('active'); }
+      // show back jika bukan home
+      backBtn.style.display = (id!== 'home') ? 'inline-flex' : 'none'
+      document.body.scrollTo ? document.body.scrollTo({top:0,behavior:'smooth'}) : window.scrollTo({top:0,behavior:'smooth'})
+      location.hash = id
+    }
 
-    buttons.forEach(btn=>{
-      btn.setAttribute('aria-expanded','false')
-      btn.addEventListener('click',()=>{
-        const sel = btn.getAttribute('data-target')
-        const content = document.querySelector(sel)
-        const isOpen = content.style.display==='block'
-        // tutup semua
-        buttons.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-expanded','false')})
-        contents.forEach(c=>c.style.display='none')
-        // buka jika belum terbuka
-        if(!isOpen){
-          btn.classList.add('active');
-          btn.setAttribute('aria-expanded','true')
-          content.style.display='block'
-          content.scrollIntoView({behavior:'smooth',block:'start'})
-          history.replaceState(null,'',sel)
-        }
-      })
-    })
+    // tombol di menu utama
+    document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)))
+    backBtn.addEventListener('click',()=>go('home'))
 
-    // ===== Katalog (contoh data, bisa diganti) =====
-    const katalog = [
-      {id:"avanza-g-2022",nama:"Toyota Avanza G 2022",tipe:"mpv",transmisi:"AT",seats:7,harga:{harian:450000,mingguan:3000000,bulanan:11000000},img:"https://placehold.co/800x480/jpg?text=Avanza%20G%202022"},
-      {id:"brio-e-2021",nama:"Honda Brio E 2021",tipe:"city",transmisi:"AT",seats:5,harga:{harian:350000,mingguan:2300000,bulanan:8500000},img:"https://placehold.co/800x480/jpg?text=Brio%20E%202021"},
-      {id:"innova-reborn-2019",nama:"Toyota Innova Reborn 2019",tipe:"mpv",transmisi:"AT",seats:7,harga:{harian:550000,mingguan:3600000,bulanan:13000000},img:"https://placehold.co/800x480/jpg?text=Innova%20Reborn%202019"}
+    // buka berdasarkan hash saat reload / link langsung
+    const initial = location.hash ? location.hash.slice(1) : 'home'
+    go(initial)
+
+    // ===== Katalog contoh =====
+    const katalog=[
+      {id:"avanza-g-2022",nama:"Toyota Avanza G 2022",tipe:"mpv",transmisi:"AT",seats:7,harga:{harian:450000,mingguan:3000000,bulanan:11000000},img:"assets/jazz.jpg"},
+      {id:"brio-e-2021",nama:"Honda Brio E 2021",tipe:"city",transmisi:"AT",seats:5,harga:{harian:350000,mingguan:2300000,bulanan:8500000},img:"assets/lexus.jpg"},
+      {id:"innova-reborn-2019",nama:"Toyota Innova Reborn 2019",tipe:"mpv",transmisi:"AT",seats:7,harga:{harian:550000,mingguan:3600000,bulanan:13000000},img:"assets/pajero.jpg"}
     ]
     const fmtIDR=(n)=> new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n)
     const waLink=(text)=> `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`
-
-    const grid = document.getElementById('gridMobil')
+    const grid=document.getElementById('gridMobil')
     function card(m){
-      const pesan = `Halo ${BRAND}, saya ingin sewa *${m.nama}*. Mohon info ketersediaan & harga.\n\nDurasi: 1-3 hari / 1 minggu / 1 bulan (pilih)\nTanggal mulai: (isi)\nLokasi antar: (isi)`
-      return `
-        <article class="card">
-          <img src="${m.img}" alt="${m.nama}">
-          <div class="card-body">
-            <div style="display:flex;align-items:center;gap:8px;justify-content:space-between">
-              <h3 style="margin:0;font-size:18px">${m.nama}</h3>
-              <span class="chip">${m.transmisi} • ${m.seats} seat</span>
-            </div>
-            <div class="price">
-              <span class="pill">Harian ${fmtIDR(m.harga.harian)}</span>
-              <span class="pill">Mingguan ${fmtIDR(m.harga.mingguan)}</span>
-              <span class="pill">Bulanan ${fmtIDR(m.harga.bulanan)}</span>
-            </div>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="a-btn" target="_blank" href="${waLink(pesan)}">Booking via WhatsApp</a>
-              <a class="a-btn a-outline" href="#booking" onclick="openById('booking','${m.nama}')">Cek ketersediaan</a>
-            </div>
+      const pesan=`Halo ${BRAND}, saya ingin sewa *${m.nama}*. Mohon info ketersediaan & harga.
+
+Durasi: 1-3 hari / 1 minggu / 1 bulan (pilih)
+Tanggal mulai: (isi)
+Lokasi antar: (isi)`
+      return `<article class="card">
+        <img src="${m.img}" alt="${m.nama}">
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:8px;justify-content:space-between">
+            <h3 style="margin:0;font-size:18px">${m.nama}</h3>
+            <span class="chip">${m.transmisi} • ${m.seats} seat</span>
           </div>
-        </article>`
+          <div class="price">
+            <span class="pill">Harian ${fmtIDR(m.harga.harian)}</span>
+            <span class="pill">Mingguan ${fmtIDR(m.harga.mingguan)}</span>
+            <span class="pill">Bulanan ${fmtIDR(m.harga.bulanan)}</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="a-btn" target="_blank" href="${waLink(pesan)}">Booking via WhatsApp</a>
+            <a class="a-btn a-outline" href="#booking" onclick="location.hash='booking'">Cek ketersediaan</a>
+          </div>
+        </div>
+      </article>`
     }
-    function render(){ grid.innerHTML = katalog.map(card).join('') }
-    render()
+    grid.innerHTML = katalog.map(card).join('')
 
-    // isi select mobil di form
-    const selectMobil = document.getElementById('selectMobil')
-    if(selectMobil){ selectMobil.innerHTML = `<option value="">Pilih mobil…</option>` + katalog.map(k=>`<option>${k.nama}</option>`).join('') }
-
-    // form -> kirim ke WA
-    document.getElementById('formCek').addEventListener('submit', e=>{
+    // Form booking -> kirim ke WA
+    document.getElementById('formCek').addEventListener('submit',e=>{
       e.preventDefault()
       const fd = new FormData(e.target)
-      const msg = `Halo ${BRAND}!\n\nSaya: ${fd.get('nama')}\nTanggal mulai: ${fd.get('mulai')}\nDurasi: ${fd.get('hari')} hari\nMobil: ${fd.get('mobil')}\n\nMohon info ketersediaan & total biayanya.`
+      const msg = `Halo ${BRAND}!
+
+Saya: ${fd.get('nama')}
+Tanggal mulai: ${fd.get('mulai')}
+Durasi: ${fd.get('hari')} hari
+Mobil: ${fd.get('mobil')}
+
+Mohon info ketersediaan & total biayanya.`
       window.open(waLink(msg),'_blank')
     })
 
-    // helper: buka section by id (untuk tombol cek ketersediaan di kartu)
-    window.openById = (id, prefill)=>{
-      const btn = document.querySelector(`.btn[data-target="#${id}"]`)
-      if(btn) btn.click();
-      if(prefill) document.getElementById('selectMobil').value = prefill
-    }
-
-    // jika ada hash di URL, buka sesuai
-    if(location.hash){
-      const btn = document.querySelector(`.btn[data-target="${location.hash}"]`)
-      if(btn) btn.click();
-    }
+    // Isi select mobil
+    document.getElementById('selectMobil').innerHTML = `<option value="">Pilih mobil…</option>` + katalog.map(k=>`<option>${k.nama}</option>`).join('')
   </script>
 </body>
 </html>
