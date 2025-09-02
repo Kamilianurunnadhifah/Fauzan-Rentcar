@@ -3,37 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Linktree Rental Mobil</title>
-  <meta name="description" content="Linktree sederhana untuk usaha rental mobil: WhatsApp, katalog, harga, syarat & ketentuan, cara booking, testimoni, lokasi." />
+  <title>Fauzan Rentcar – Linktree</title>
+  <meta name="description" content="Linktree rental mobil Fauzan Rentcar: WhatsApp, katalog, harga, booking, syarat, lokasi, testimoni." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0f172a; /* slate-900 */
-      --card:#111827; /* gray-900 */
-      --accent:#22c55e; /* green-500 */
-      --text:#e5e7eb; /* gray-200 */
-      --muted:#94a3b8; /* slate-400 */
-      --ring: rgba(34,197,94,.35);
-    }
+    :root{--bg:#0f172a;--card:#111827;--accent:#22c55e;--text:#e5e7eb;--muted:#94a3b8;--ring:rgba(34,197,94,.35)}
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:radial-gradient(1200px 600px at 80% -10%,rgba(34,197,94,.10),transparent),linear-gradient(180deg,#0b1022,#0f172a);color:var(--text)}
-    .container{max-width:900px;margin:0 auto;padding:24px}
-    .hero{display:flex;gap:18px;align-items:center;padding:28px 18px}
-    .avatar{width:72px;height:72px;border-radius:18px;object-fit:cover;border:2px solid rgba(255,255,255,.08)}
-    .brand h1{font-size:26px;line-height:1.15;margin:0 0 6px;font-weight:800}
-    .brand p{margin:0;color:var(--muted)}
+    .container{max-width:900px;margin:0 auto;padding:20px}
+    .hero{display:flex;gap:14px;align-items:center;padding:10px 6px 14px}
+    .hero img{width:56px;height:56px;border-radius:14px;border:2px solid rgba(255,255,255,.08)}
+    .hero h1{margin:0;font-size:22px;font-weight:800}
+    .hero p{margin:2px 0 0;color:var(--muted)}
 
-    .buttons{display:grid;grid-template-columns:1fr;gap:12px;margin:18px 0 28px}
-    .btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);backdrop-filter: blur(6px);text-decoration:none;color:var(--text);font-weight:600;transition:.2s;}
+    /* Buttons */
+    .btn{display:flex;align-items:center;gap:10px;justify-content:space-between;width:100%;padding:14px 18px;margin:10px 0;border-radius:16px;background:#1e293b;color:var(--text);font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.06);font-size:16px;transition:.2s}
     .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.14)}
-    .btn.whatsapp{background:linear-gradient(180deg,#1f9d55,#16a34a);border-color:#22c55e;box-shadow:0 10px 30px -10px var(--ring)}
-    .btn .tag{margin-left:auto;font-size:12px;padding:.25rem .5rem;border-radius:999px;background:rgba(255,255,255,.08);color:var(--muted);font-weight:600}
+    .btn.whatsapp{background:linear-gradient(180deg,#1f9d55,#16a34a);color:#052e16;border-color:#22c55e;box-shadow:0 10px 30px -10px var(--ring)}
+    .btn .tag{margin-left:auto;font-size:12px;padding:.25rem .5rem;border-radius:999px;background:rgba(255,255,255,.08);color:#052e16}
+    .btn.active{background:#334155}
 
-    .section{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:18px;margin:18px 0}
-    .section h2{margin:0 0 10px;font-size:20px}
+    /* Accordion content */
+    .content{display:none;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;margin:-2px 0 14px}
+
+    /* Utilities */
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
     .card{grid-column:span 12;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden}
     .card img{width:100%;height:180px;object-fit:cover;display:block}
@@ -41,266 +37,177 @@
     .chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted)}
     .price{margin:8px 0 10px;display:flex;flex-wrap:wrap;gap:8px}
     .price .pill{background:rgba(34,197,94,.15);border:1px solid #22c55e;color:#bbf7d0;padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
-    .actions{display:flex;gap:10px;flex-wrap:wrap}
-    .a-btn{flex:1;min-width:160px;text-align:center;text-decoration:none;color:#052e16;background:#22c55e;font-weight:800;border-radius:12px;padding:10px 12px}
+    .a-btn{display:inline-block;text-align:center;text-decoration:none;color:#052e16;background:#22c55e;font-weight:800;border-radius:12px;padding:10px 12px}
     .a-outline{border:1px solid rgba(255,255,255,.16);background:transparent;color:var(--text)}
-
-    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
     .input, select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--text);padding:10px 12px;border-radius:12px;min-width:160px}
     .note{color:var(--muted);font-size:14px}
-
-    .twocol{display:grid;grid-template-columns:1fr;gap:14px}
     .list{display:grid;gap:8px}
     .list li{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:10px 12px;border-radius:12px}
 
-    .footer{opacity:.8;text-align:center;font-size:13px;padding:24px}
-    .floating-wa{position:fixed;right:16px;bottom:16px;background:#22c55e;border-radius:999px;padding:14px 16px;color:#052e16;font-weight:900;text-decoration:none;box-shadow:0 10px 30px -10px var(--ring);}
-
-    @media(min-width:640px){
-      .grid .card{grid-column:span 6}
-      .twocol{grid-template-columns:1.2fr .8fr}
-    }
-    @media(min-width:1000px){
-      .grid .card{grid-column:span 4}
-    }
+    @media(min-width:640px){.grid .card{grid-column:span 6}}
+    @media(min-width:1000px){.grid .card{grid-column:span 4}}
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Header / Brand -->
     <header class="hero">
-      <img class="avatar" src="https://placehold.co/160x160/png?text=LOGO" alt="Logo Rental" />
-      <div class="brand">
+      <img src="https://placehold.co/120/png?text=FR" alt="Fauzan Rentcar"/>
+      <div>
         <h1>Fauzan Rentcar</h1>
         <p>Antar-jemput | Lepas kunci | Sopir profesional • Area: <strong>Kota Anda</strong></p>
       </div>
     </header>
 
-    <!-- Linktree Buttons -->
-    <nav class="buttons">
-      <a class="btn whatsapp" target="_blank" id="btnWA" href="#">
-        💬 WhatsApp
-        <span class="tag">balas cepat</span>
-      </a>
-      <a class="btn" href="#katalog">🚗 Katalog Mobil</a>
-      <a class="btn" href="#harga">💲 Harga & Paket</a>
-      <a class="btn" href="#booking">📝 Cek Ketersediaan / Booking</a>
-      <a class="btn" href="#syarat">📎 Syarat & Ketentuan</a>
-      <a class="btn" href="#cara">⚙️ Cara Booking</a>
-      <a class="btn" href="#testimoni">🌟 Testimoni</a>
-      <a class="btn" href="#lokasi">📍 Lokasi</a>
-      <a class="btn" href="#tentang">ℹ️ Tentang Kami</a>
-      <a class="btn" href="#kontak">☎️ Kontak Lainnya</a>
-    </nav>
+    <button class="btn whatsapp" id="btnWA">💬 WhatsApp <span class="tag">balas cepat</span></button>
 
-    <!-- Katalog -->
-    <section id="katalog" class="section">
-      <h2>🚗 Katalog Mobil</h2>
-      <div class="filters">
-        <select id="filterTipe" aria-label="Filter tipe">
-          <option value="">Semua Tipe</option>
-          <option value="city">City Car</option>
-          <option value="mpv">MPV</option>
-          <option value="suv">SUV</option>
-        </select>
-        <select id="filterTransmisi" aria-label="Filter transmisi">
-          <option value="">Semua Transmisi</option>
-          <option value="AT">Automatic (AT)</option>
-          <option value="MT">Manual (MT)</option>
-        </select>
-        <input id="cari" class="input" placeholder="Cari model… (misal: Avanza)" />
-      </div>
-      <p class="note">*Harga sudah termasuk unit bersih & siap jalan. Belum termasuk BBM, tol, parkir. Bisa antar-jemput (opsional).</p>
+    <button class="btn" data-target="#katalog">🚗 Katalog Mobil</button>
+    <div id="katalog" class="content">
+      <div class="note" style="margin-bottom:10px">*Harga belum termasuk BBM, tol, parkir. Bisa antar-jemput (opsional).</div>
       <div class="grid" id="gridMobil"></div>
-    </section>
+    </div>
 
-    <!-- Harga & Paket Ringkas -->
-    <section id="harga" class="section">
-      <h2>💲 Harga & Paket</h2>
-      <div class="twocol">
-        <div>
-          <ul class="list">
-            <li><strong>Paket Harian</strong> — 24 jam lepas kunci / dengan sopir</li>
-            <li><strong>Paket Mingguan</strong> — hemat hingga 15% dari harian</li>
-            <li><strong>Paket Bulanan</strong> — hemat hingga 25% + free antar (syarat berlaku)</li>
-            <li><strong>Sopir</strong> — +Rp150.000 s/d Rp250.000 per hari (tergantung rute)</li>
-          </ul>
-        </div>
-        <div>
-          <ul class="list">
-            <li>DP minimal 20% untuk mengunci tanggal</li>
-            <li>Jam operasional: 07:00–21:00 (emergency 24/7 WA)</li>
-            <li>Pembayaran: Transfer, QRIS, Tunai</li>
-            <li>Diskon khusus untuk sewa >7 hari & perusahaan</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <button class="btn" data-target="#harga">💲 Harga & Paket</button>
+    <div id="harga" class="content">
+      <ul class="list">
+        <li><strong>Paket Harian</strong> — 24 jam lepas kunci / dengan sopir</li>
+        <li><strong>Paket Mingguan</strong> — hemat hingga 15% dari harian</li>
+        <li><strong>Paket Bulanan</strong> — hemat hingga 25% + free antar (syarat berlaku)</li>
+        <li><strong>Sopir</strong> — +Rp150.000 s/d Rp250.000 per hari (tergantung rute)</li>
+      </ul>
+    </div>
 
-    <!-- Booking / Cek Ketersediaan -->
-    <section id="booking" class="section">
-      <h2>📝 Cek Ketersediaan / Booking</h2>
-      <p class="note">Isi form singkat berikut atau langsung chat WhatsApp. Admin kami akan konfirmasi dalam beberapa menit.</p>
-      <div class="twocol">
-        <form id="formCek" class="section" style="margin:0">
-          <div class="grid" style="grid-template-columns:repeat(12,1fr);gap:10px">
-            <div style="grid-column:span 12">
-              <label>Nama<br><input class="input" name="nama" required placeholder="Nama lengkap" /></label>
-            </div>
-            <div style="grid-column:span 6">
-              <label>Tanggal Mulai<br><input class="input" type="date" name="mulai" required /></label>
-            </div>
-            <div style="grid-column:span 6">
-              <label>Lama Sewa (hari)<br><input class="input" type="number" min="1" name="hari" required value="1" /></label>
-            </div>
-            <div style="grid-column:span 12">
-              <label>Pilihan Mobil<br>
-                <select class="input" name="mobil" required id="selectMobil"></select>
-              </label>
-            </div>
-            <div style="grid-column:span 12">
-              <button type="submit" class="a-btn" style="width:100%">Kirim via WhatsApp</button>
-            </div>
+    <button class="btn" data-target="#booking">📝 Cek Ketersediaan / Booking</button>
+    <div id="booking" class="content">
+      <p class="note">Isi form berikut atau klik Booking via WhatsApp di kartu mobil.</p>
+      <form id="formCek">
+        <div class="grid" style="grid-template-columns:repeat(12,1fr);gap:10px">
+          <div style="grid-column:span 12">
+            <label>Nama<br><input class="input" name="nama" required placeholder="Nama lengkap" /></label>
           </div>
-        </form>
-        <div class="section" style="margin:0">
-          <h3 style="margin-top:0">Atau gunakan Google Form</h3>
-          <a class="a-btn a-outline" target="_blank" href="https://forms.gle/" rel="noopener">Buka Google Form</a>
-          <p class="note" style="margin-top:10px">Ganti tautan di atas dengan form Anda untuk keperluan arsip & rekap.</p>
+          <div style="grid-column:span 6">
+            <label>Tanggal Mulai<br><input class="input" type="date" name="mulai" required /></label>
+          </div>
+          <div style="grid-column:span 6">
+            <label>Lama Sewa (hari)<br><input class="input" type="number" min="1" name="hari" required value="1" /></label>
+          </div>
+          <div style="grid-column:span 12">
+            <label>Pilihan Mobil<br>
+              <select class="input" name="mobil" required id="selectMobil"></select>
+            </label>
+          </div>
+          <div style="grid-column:span 12">
+            <button type="submit" class="a-btn" style="width:100%">Kirim via WhatsApp</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </form>
+    </div>
 
-    <!-- Syarat & Ketentuan -->
-    <section id="syarat" class="section">
-      <h2>📎 Syarat & Ketentuan</h2>
+    <button class="btn" data-target="#syarat">📎 Syarat & Ketentuan</button>
+    <div id="syarat" class="content">
       <ul class="list">
         <li>WNI: KTP + SIM A aktif; WNA: Paspor + SIM internasional.</li>
-        <li>Deposit/jaminan (ditahan & dikembalikan saat mobil balik sesuai kondisi).</li>
+        <li>Deposit/jaminan (dikembalikan saat mobil balik sesuai kondisi).</li>
         <li>Overtime >24 jam dihitung pro-rate (per jam).</li>
         <li>Denda pelanggaran lalu lintas menjadi tanggung jawab penyewa.</li>
-        <li>Unit dilarang untuk balap/kejahatan/kegiatan melanggar hukum.</li>
+        <li>Dilarang untuk balap/kejahatan/kegiatan melanggar hukum.</li>
       </ul>
-    </section>
+    </div>
 
-    <!-- Cara Booking -->
-    <section id="cara" class="section">
-      <h2>⚙️ Cara Booking</h2>
+    <button class="btn" data-target="#cara">⚙️ Cara Booking</button>
+    <div id="cara" class="content">
       <ol class="list" style="list-style:decimal inside">
         <li>Pilih mobil dan cek tanggal tersedia.</li>
         <li>Kirim data diri & jadwal lewat WhatsApp / Form.</li>
-        <li>Lakukan DP untuk mengunci tanggal.</li>
+        <li>Bayar DP untuk mengunci tanggal.</li>
         <li>Unit diantar/ambil di lokasi yang disepakati.</li>
         <li>Pelunasan saat serah terima unit.</li>
       </ol>
-    </section>
+    </div>
 
-    <!-- Testimoni -->
-    <section id="testimoni" class="section">
-      <h2>🌟 Testimoni</h2>
-      <div class="grid" style="grid-template-columns:repeat(12,1fr);gap:12px">
-        <blockquote class="card" style="grid-column:span 12;padding:14px">
-          <p>“Mobil bersih, admin responsif, sopir ramah. Pasti repeat!” — <strong>Salsa</strong></p>
-        </blockquote>
-        <blockquote class="card" style="grid-column:span 12;padding:14px">
-          <p>“Harga masuk akal, proses cepat. Rekomended.” — <strong>Ardi</strong></p>
-        </blockquote>
-      </div>
-    </section>
+    <button class="btn" data-target="#testimoni">🌟 Testimoni</button>
+    <div id="testimoni" class="content">
+      <blockquote class="card" style="padding:14px;margin:0 0 10px">
+        <p style="margin:0 0 6px">“Mobil bersih, admin responsif, sopir ramah. Pasti repeat!”</p>
+        <span class="chip">— Salsa</span>
+      </blockquote>
+      <blockquote class="card" style="padding:14px;margin:0">
+        <p style="margin:0 0 6px">“Harga masuk akal, proses cepat. Rekomended.”</p>
+        <span class="chip">— Ardi</span>
+      </blockquote>
+    </div>
 
-    <!-- Lokasi -->
-    <section id="lokasi" class="section">
-      <h2>📍 Lokasi</h2>
-      <p class="note">Ganti sematan peta berikut dengan alamat Anda.</p>
+    <button class="btn" data-target="#lokasi">📍 Lokasi</button>
+    <div id="lokasi" class="content">
       <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
         <iframe title="Lokasi Rental" src="https://www.google.com/maps?q=-6.200000,106.816666&z=12&output=embed" width="100%" height="300" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    </section>
+    </div>
 
-    <!-- Tentang Kami & Kontak -->
-    <section id="tentang" class="section">
-      <h2>ℹ️ Tentang Kami</h2>
-      <p>Kami adalah penyedia jasa rental mobil terpercaya di <strong>Kota Anda</strong> sejak 20XX. Fokus pada layanan tepat waktu, armada prima, dan harga bersahabat.</p>
-    </section>
+    <button class="btn" data-target="#tentang">ℹ️ Tentang Kami</button>
+    <div id="tentang" class="content">
+      <p>Kami adalah penyedia jasa rental mobil terpercaya sejak 20XX. Fokus pada layanan tepat waktu, armada prima, dan harga bersahabat.</p>
+    </div>
 
-    <section id="kontak" class="section">
-      <h2>☎️ Kontak Lainnya</h2>
+    <button class="btn" data-target="#kontak">☎️ Kontak Lainnya</button>
+    <div id="kontak" class="content">
       <ul class="list">
         <li>Instagram: <a href="https://instagram.com/username" target="_blank" rel="noopener">@username</a></li>
-        <li>Telepon: <a href="tel:+626281234567890">(021) 123-456-789</a></li>
-        <li>Email: <a href="mailto:halo@namarental.com">halo@namarental.com</a></li>
+        <li>Telepon: <a href="tel:+626281511515141">(021) 123-456-789</a></li>
+        <li>Email: <a href="mailto:halo@fauzanrentcar.com">halo@fauzanrentcar.com</a></li>
         <li>Jam Operasional: 07:00–21:00 (WA 24/7 untuk darurat)</li>
       </ul>
-    </section>
-
-    <footer class="footer">© <span id="year"></span> Fauzan Rentcar • All rights reserved</footer>
+    </div>
   </div>
 
-  <!-- Floating WhatsApp -->
-  <a id="floatWA" class="floating-wa" target="_blank" href="#">WA</a>
-
   <script>
-    /***** KONFIGURASI CEPAT *****/
-    const WA_NUMBER = "6281234567890"; // ganti ke nomor WhatsApp Anda (format internasional, tanpa +)
-    const BRAND = "Fauzan Rentcar";  // nama brand Anda
+    /***** KONFIG *****/
+    const WA_NUMBER = "6281511515141"; // nomor tanpa tanda +
+    const BRAND = "Fauzan Rentcar";
 
-    // Data Katalog — contoh, silakan edit/duplikasi
-    const katalog = [
-      {
-        id: "avanza-g-2022",
-        nama: "Toyota Avanza G 2022",
-        tipe: "mpv",
-        transmisi: "AT",
-        seats: 7,
-        harga: { harian: 450000, mingguan: 3000000, bulanan: 11000000 },
-        img: "https://placehold.co/800x480/jpg?text=Avanza%20G%202022"
-      },
-      {
-        id: "brio-e-2021",
-        nama: "Honda Brio E 2021",
-        tipe: "city",
-        transmisi: "AT",
-        seats: 5,
-        harga: { harian: 350000, mingguan: 2300000, bulanan: 8500000 },
-        img: "https://placehold.co/800x480/jpg?text=Brio%20E%202021"
-      },
-      {
-        id: "innova-reborn-2019",
-        nama: "Toyota Innova Reborn 2019",
-        tipe: "mpv",
-        transmisi: "AT",
-        seats: 7,
-        harga: { harian: 550000, mingguan: 3600000, bulanan: 13000000 },
-        img: "https://placehold.co/800x480/jpg?text=Innova%20Reborn%202019"
-      },
-      {
-        id: "rush-trd-2020",
-        nama: "Toyota Rush TRD 2020",
-        tipe: "suv",
-        transmisi: "MT",
-        seats: 7,
-        harga: { harian: 500000, mingguan: 3300000, bulanan: 12000000 },
-        img: "https://placehold.co/800x480/jpg?text=Rush%20TRD%202020"
-      }
-    ];
-
-    /***** UTIL *****/
-    const fmtIDR = (n)=> new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n)
-    const waLink = (text)=> `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`
-
-    // Set brand & WhatsApp buttons
-    document.title = BRAND + " – Linktree";
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // WhatsApp default
     const defaultMsg = `Halo ${BRAND}, saya ingin bertanya tentang sewa mobil.`
-    document.getElementById('btnWA').href = waLink(defaultMsg)
-    document.getElementById('floatWA').href = waLink(defaultMsg)
+    document.getElementById('btnWA').onclick = ()=> window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(defaultMsg)}`,'_blank')
 
-    // Render katalog
+    // ===== Accordion: buka/utup konten saat klik, satu terbuka dalam satu waktu =====
+    const buttons = Array.from(document.querySelectorAll('.btn[data-target]'))
+    const contents = Array.from(document.querySelectorAll('.content'))
+    // tutup semua saat awal
+    contents.forEach(c=>c.style.display='none');
+
+    buttons.forEach(btn=>{
+      btn.setAttribute('aria-expanded','false')
+      btn.addEventListener('click',()=>{
+        const sel = btn.getAttribute('data-target')
+        const content = document.querySelector(sel)
+        const isOpen = content.style.display==='block'
+        // tutup semua
+        buttons.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-expanded','false')})
+        contents.forEach(c=>c.style.display='none')
+        // buka jika belum terbuka
+        if(!isOpen){
+          btn.classList.add('active');
+          btn.setAttribute('aria-expanded','true')
+          content.style.display='block'
+          content.scrollIntoView({behavior:'smooth',block:'start'})
+          history.replaceState(null,'',sel)
+        }
+      })
+    })
+
+    // ===== Katalog (contoh data, bisa diganti) =====
+    const katalog = [
+      {id:"avanza-g-2022",nama:"Toyota Avanza G 2022",tipe:"mpv",transmisi:"AT",seats:7,harga:{harian:450000,mingguan:3000000,bulanan:11000000},img:"https://placehold.co/800x480/jpg?text=Avanza%20G%202022"},
+      {id:"brio-e-2021",nama:"Honda Brio E 2021",tipe:"city",transmisi:"AT",seats:5,harga:{harian:350000,mingguan:2300000,bulanan:8500000},img:"https://placehold.co/800x480/jpg?text=Brio%20E%202021"},
+      {id:"innova-reborn-2019",nama:"Toyota Innova Reborn 2019",tipe:"mpv",transmisi:"AT",seats:7,harga:{harian:550000,mingguan:3600000,bulanan:13000000},img:"https://placehold.co/800x480/jpg?text=Innova%20Reborn%202019"}
+    ]
+    const fmtIDR=(n)=> new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n)
+    const waLink=(text)=> `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`
+
     const grid = document.getElementById('gridMobil')
     function card(m){
       const pesan = `Halo ${BRAND}, saya ingin sewa *${m.nama}*. Mohon info ketersediaan & harga.\n\nDurasi: 1-3 hari / 1 minggu / 1 bulan (pilih)\nTanggal mulai: (isi)\nLokasi antar: (isi)`
       return `
-        <article class="card" data-tipe="${m.tipe}" data-transmisi="${m.transmisi}" data-nama="${m.nama.toLowerCase()}">
+        <article class="card">
           <img src="${m.img}" alt="${m.nama}">
           <div class="card-body">
             <div style="display:flex;align-items:center;gap:8px;justify-content:space-between">
@@ -312,9 +219,9 @@
               <span class="pill">Mingguan ${fmtIDR(m.harga.mingguan)}</span>
               <span class="pill">Bulanan ${fmtIDR(m.harga.bulanan)}</span>
             </div>
-            <div class="actions">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
               <a class="a-btn" target="_blank" href="${waLink(pesan)}">Booking via WhatsApp</a>
-              <a class="a-btn a-outline" href="#booking" onclick="document.getElementById('selectMobil').value='${m.nama}';">Cek ketersediaan</a>
+              <a class="a-btn a-outline" href="#booking" onclick="openById('booking','${m.nama}')">Cek ketersediaan</a>
             </div>
           </div>
         </article>`
@@ -322,34 +229,30 @@
     function render(){ grid.innerHTML = katalog.map(card).join('') }
     render()
 
-    // Isi select mobil pada form
+    // isi select mobil di form
     const selectMobil = document.getElementById('selectMobil')
-    selectMobil.innerHTML = `<option value="">Pilih mobil…</option>` + katalog.map(k=>`<option>${k.nama}</option>`).join('')
+    if(selectMobil){ selectMobil.innerHTML = `<option value="">Pilih mobil…</option>` + katalog.map(k=>`<option>${k.nama}</option>`).join('') }
 
-    // Filter & Cari
-    const fTipe = document.getElementById('filterTipe')
-    const fTrans = document.getElementById('filterTransmisi')
-    const fCari = document.getElementById('cari')
-    function applyFilter(){
-      const tipe = fTipe.value
-      const trans = fTrans.value
-      const q = fCari.value.trim().toLowerCase()
-      document.querySelectorAll('#gridMobil .card').forEach(card=>{
-        const okTipe = !tipe || card.dataset.tipe === tipe
-        const okTrans = !trans || card.dataset.transmisi === trans
-        const okCari = !q || card.dataset.nama.includes(q)
-        card.style.display = (okTipe && okTrans && okCari) ? '' : 'none'
-      })
-    }
-    ;[fTipe,fTrans,fCari].forEach(el=>el.addEventListener('input',applyFilter))
-
-    // Form kirim ke WA
+    // form -> kirim ke WA
     document.getElementById('formCek').addEventListener('submit', e=>{
       e.preventDefault()
       const fd = new FormData(e.target)
       const msg = `Halo ${BRAND}!\n\nSaya: ${fd.get('nama')}\nTanggal mulai: ${fd.get('mulai')}\nDurasi: ${fd.get('hari')} hari\nMobil: ${fd.get('mobil')}\n\nMohon info ketersediaan & total biayanya.`
       window.open(waLink(msg),'_blank')
     })
+
+    // helper: buka section by id (untuk tombol cek ketersediaan di kartu)
+    window.openById = (id, prefill)=>{
+      const btn = document.querySelector(`.btn[data-target="#${id}"]`)
+      if(btn) btn.click();
+      if(prefill) document.getElementById('selectMobil').value = prefill
+    }
+
+    // jika ada hash di URL, buka sesuai
+    if(location.hash){
+      const btn = document.querySelector(`.btn[data-target="${location.hash}"]`)
+      if(btn) btn.click();
+    }
   </script>
 </body>
 </html>
